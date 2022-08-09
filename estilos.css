@@ -19,4 +19,9 @@ body{
     overflow: hidden;
     padding: 50px 0;
 }
-
+.title{
+    font-size: 2rem;
+    border-bottom: 6px solid steelblue;
+    padding-bottom: .5em;
+    margin-bottom: 1.5em;
+}
