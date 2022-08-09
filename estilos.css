@@ -25,3 +25,105 @@ body{
     padding-bottom: .5em;
     margin-bottom: 1.5em;
 }
+
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: 270px;
+    gap: 1rem;
+}
+.gallery__link{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.gallery__link:hover::before{
+    transform: translateY(0);
+}
+.gallery__link::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(105, 90, 205, 0.521);
+    transform: translateY(100%);
+    transition: transform .3s;
+}
+.gallery__img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* lightbox */
+.show{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    top: 0; 
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: transform .3s;
+}
+.show:target{
+    transform: scale(1);
+}
+.show__container{
+    width: 90%;
+    height: 70%;
+    position: relative;
+    background-image: var(--image-url);
+    background-position: center;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, .3);
+}
+
+.show--n2{
+    --image-url: url(img/imagen2.jpg);
+}
+.show--n3{
+    --image-url: url(img/imagen3.jpg);
+}
+.show--n4{
+    --image-url: url(img/imagen4.jpg);
+}
+.show--n5{
+    --image-url: url(img/imagen5.jpg);
+}
+.show--n6{
+    --image-url: url(img/imagen6.jpg);
+}
+
+.show__close{
+    background-color: crimson;
+    color: #fff;
+    text-decoration: none;
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    right: 0;
+    top: -20;
+    right: -20px;
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 400px) {
+    .gallery{
+        grid-template-columns: 1fr;
+    }
+    .show__close{
+        right: -10px;
+    }
+}
